@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdditionalProgram;
+use App\Models\Advertisement;
 use App\Models\Hero;
 use App\Models\Program;
 use App\Models\Testimonial;
@@ -17,6 +18,9 @@ class LandingPageController extends Controller
         $heroes = Hero::where('is_active', true)
             ->orderBy('sort_order')
             ->get(['id', 'title', 'subtitle', 'image_url']);
+
+        $advertisements = Advertisement::where('is_active', true)
+            ->get(['id', 'name', 'description', 'url', 'image_url']);
 
         $programs = Program::where('is_active', true)
             ->orderBy('sort_order')
@@ -33,6 +37,7 @@ class LandingPageController extends Controller
 
         return Inertia::render('Welcome', [
             'heroes' => $heroes,
+            'advertisements' => $advertisements,
             'programs' => $programs,
             'additionalPrograms' => $additionalPrograms,
             'testimonials' => $testimonials,

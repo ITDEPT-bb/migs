@@ -1,94 +1,93 @@
 import { Link, Head } from "@inertiajs/react";
 import {
-    Hero,
-    AboutUs,
-    MissionVisionValues,
-    Programs,
-    AdditionalPrograms,
-    WhyChooseUs,
-    Testimonials,
-    ContactUs,
+	Hero,
+	AboutUs,
+	MissionVisionValues,
+	Programs,
+	AdditionalPrograms,
+	WhyChooseUs,
+	Testimonials,
+	ContactUs,
 } from "@/Sections";
 import { Navbar, Footer, Advertisements } from "@/Components/LandingPage";
 
-import ads from "/public/image/Advertisements/ADS 1.jpg";
-import adsT from "/public/image/Advertisements/ADS 2.jpg";
-
-const ads1 = [
-    { src: ads, alt: "Ad 1" },
-    { src: adsT, alt: "Ad 2" },
-];
-
-const ads2 = [
-    { src: ads, alt: "Ad 3" },
-    { src: adsT, alt: "Ad 4" },
-];
-
-const ads3 = [
-    { src: ads, alt: "Ad 5" },
-    { src: adsT, alt: "Ad 6" },
-];
+const chunkArray = (array, size) => {
+	const result = [];
+	for (let i = 0; i < array.length; i += size) {
+		result.push(array.slice(i, i + size));
+	}
+	return result;
+};
 
 export default function Welcome({
-    auth,
-    heroes,
-    programs,
-    additionalPrograms,
-    testimonials,
-    WhyChooseUsItems,
+	auth,
+	heroes,
+	programs,
+	additionalPrograms,
+	testimonials,
+	WhyChooseUsItems,
+	advertisements,
 }) {
-    return (
-        <>
-            <Head title="Welcome" />
-            <Navbar auth={auth} />
+	const adsChunks = chunkArray(advertisements, 2);
 
-            <section id="hero" className="max-w-7xl mx-auto">
-                <Hero heroes={heroes} />
-            </section>
+	return (
+		<>
+			<Head title="Welcome" />
+			<Navbar auth={auth} />
 
-            <section className="py-10 bg-primary rounded-md">
-                <section className="max-w-7xl mx-auto">
-                    <Advertisements ads={ads1} />
-                </section>
-            </section>
+			<section
+				id="hero"
+				className="max-w-7xl mx-auto">
+				<Hero heroes={heroes} />
+			</section>
 
-            <section id="about-us" className="max-w-7xl mx-auto">
-                <AboutUs />
-            </section>
+			<section className="py-10 bg-primary">
+				<section className="max-w-7xl mx-auto">
+					<Advertisements ads={adsChunks[0]} />
+				</section>
+			</section>
 
-            <MissionVisionValues />
+			<section
+				id="about-us"
+				className="max-w-7xl mx-auto">
+				<AboutUs />
+			</section>
 
-            <section id="programs" className="bg-bgSkyBlue">
-                <Programs programs={programs} />
-            </section>
+			<MissionVisionValues />
 
-            <section>
-                <AdditionalPrograms additionalPrograms={additionalPrograms} />
-            </section>
+			<section
+				id="programs"
+				className="bg-bgSkyBlue">
+				<Programs programs={programs} />
+			</section>
 
-            <section className="py-10 bg-gray-100 rounded-md">
-                <section className="max-w-7xl mx-auto">
-                    <Advertisements ads={ads2} />
-                </section>
-            </section>
+			<section>
+				<AdditionalPrograms additionalPrograms={additionalPrograms} />
+			</section>
 
-            <WhyChooseUs WhyChooseUsItems={WhyChooseUsItems} />
+			<section className="py-10 bg-primary">
+				<section className="max-w-7xl mx-auto">
+					<Advertisements ads={adsChunks[1]} />
+				</section>
+			</section>
 
-            <section className="py-5 bg-bgSkyBlue rounded-md">
-                <section className="max-w-7xl mx-auto">
-                    <Advertisements ads={ads3} />
-                </section>
-            </section>
+			<WhyChooseUs WhyChooseUsItems={WhyChooseUsItems} />
 
-            <section id="testimonials">
-                <Testimonials testimonials={testimonials} />
-            </section>
+			<section className="py-10 bg-primary">
+				<section className="max-w-7xl mx-auto">
+					<Advertisements ads={adsChunks[2]} />
+				</section>
+			</section>
 
-            <section id="contact-us">
-                <ContactUs />
-            </section>
+			<section id="testimonials">
+				<Testimonials testimonials={testimonials} />
+			</section>
 
-            <Footer />
-        </>
-    );
+			<section id="contact-us">
+				<ContactUs />
+			</section>
+
+			<Footer />
+		</>
+	);
 }
