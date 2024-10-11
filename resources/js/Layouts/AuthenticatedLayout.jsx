@@ -3,32 +3,100 @@ import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
+import TextInput from "@/Components/TextInput";
 import { Link } from "@inertiajs/react";
+import {
+	HomeIcon,
+	UserIcon,
+	PencilSquareIcon,
+	AcademicCapIcon,
+	ClipboardDocumentIcon,
+	FolderIcon,
+	ChartPieIcon,
+	PresentationChartBarIcon,
+	ArchiveBoxArrowDownIcon,
+	CogIcon,
+	MagnifyingGlassIcon,
+} from "@heroicons/react/24/solid";
 
-export default function Authenticated({ user, header, children }) {
+import logo from "/public/image/Hero/LOGO.png";
+import smallLogo from "/public/image/Hero/LOGO 1.png";
+
+export default function Authenticated({ user, header, children, number }) {
 	const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [searchTerm, setSearchTerm] = useState("");
+
+	const sidebarItems = [
+		{ name: "Dashboard", icon: HomeIcon, href: "#" },
+		{ name: "Registration", icon: PencilSquareIcon, href: route("dashboard") },
+		{ name: "Course/s", icon: AcademicCapIcon, href: route("dashboard") },
+		{ name: "Project/s", icon: ClipboardDocumentIcon, href: route("dashboard") },
+		{ name: "My Folder", icon: FolderIcon, href: route("dashboard") },
+		{ name: "Chart/s", icon: ChartPieIcon, href: route("dashboard") },
+		{ name: "Reports", icon: PresentationChartBarIcon, href: route("dashboard") },
+		{ name: "Archive", icon: ArchiveBoxArrowDownIcon, href: route("dashboard") },
+	];
 
 	return (
-		<div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-			<nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex justify-between h-16">
-						<div className="flex">
-							<div className="shrink-0 flex items-center">
-								<Link href="/">
-									<ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-								</Link>
-							</div>
+		<div className="min-h-screen bg-white dark:bg-gray-900 flex">
+			{/* Sidebar */}
+			<div
+				className={`transition-all duration-300 ${
+					isSidebarOpen ? "w-64" : "w-20"
+				} bg-white dark:bg-gray-700 py-4 shadow-2xl border-1 border-r-2 border-gray-200`}>
+				<div className="flex justify-between items-center mb-6">
+					<button
+						onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+						className="text-gray-400 hover:text-white px-4 py-2 border-b-2 border-oceanBlue">
+						{isSidebarOpen ? (
+							<img
+								src={logo}
+								alt="Full Logo"
+								className="h-8 w-auto block"
+							/>
+						) : (
+							<img
+								src={smallLogo}
+								alt="Small Logo"
+								className="h-12 w-auto block"
+							/>
+						)}
+					</button>
+				</div>
 
-							<div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-								<NavLink
-									href={route("dashboard")}
-									active={route().current("dashboard")}>
-									Dashboard
-								</NavLink>
-							</div>
+				<nav className="space-y-0">
+					{sidebarItems.map((item) => (
+						<Link
+							key={item.name}
+							href={item.href}
+							className={`flex items-center text-oceanBlue hover:bg-oceanBlue hover:text-white p-4 transition-all duration-300 ${
+								isSidebarOpen ? "justify-start" : "justify-center"
+							} ${route().current(item.href.split(".")[1]) ? "bg-oceanBlue" : ""}`}>
+							<item.icon className="h-6 w-6" />
+							{isSidebarOpen && <span className="ml-4">{item.name}</span>}
+						</Link>
+					))}
+				</nav>
+			</div>
+
+			{/* Main Content */}
+			<div className="flex-1">
+				<nav className="bg-gradient-to-r from-oceanBlue via-skyWater to-aquaWave dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 py-2">
+					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+						{/* Search Input */}
+						<div className="relative w-full max-w-xs justify-center flex-1">
+							<input
+								type="text"
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
+								placeholder="Search..."
+								className="pl-10 pr-16 py-2 rounded-md border text-oceanBlue border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 w-full"
+							/>
+							<MagnifyingGlassIcon className="absolute right-9 top-1/2 transform -translate-y-1/2 h-5 w-5 text-oceanBlue" />
 						</div>
 
+						{/* User Dropdown */}
 						<div className="hidden sm:flex sm:items-center sm:ms-6">
 							<div className="ms-3 relative">
 								<Dropdown>
@@ -38,7 +106,6 @@ export default function Authenticated({ user, header, children }) {
 												type="button"
 												className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
 												{user.name}
-
 												<svg
 													className="ms-2 -me-0.5 h-4 w-4"
 													xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +120,6 @@ export default function Authenticated({ user, header, children }) {
 											</button>
 										</span>
 									</Dropdown.Trigger>
-
 									<Dropdown.Content>
 										<Dropdown.Link href={route("profile.edit")}>Profile</Dropdown.Link>
 										<Dropdown.Link
@@ -67,6 +133,7 @@ export default function Authenticated({ user, header, children }) {
 							</div>
 						</div>
 
+						{/* Mobile Menu Button */}
 						<div className="-me-2 flex items-center sm:hidden">
 							<button
 								onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
@@ -94,45 +161,49 @@ export default function Authenticated({ user, header, children }) {
 							</button>
 						</div>
 					</div>
-				</div>
 
-				<div className={(showingNavigationDropdown ? "block" : "hidden") + " sm:hidden"}>
-					<div className="pt-2 pb-3 space-y-1">
-						<ResponsiveNavLink
-							href={route("dashboard")}
-							active={route().current("dashboard")}>
-							Dashboard
-						</ResponsiveNavLink>
-					</div>
-
-					<div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-						<div className="px-4">
-							<div className="font-medium text-base text-gray-800 dark:text-gray-200">
-								{user.name}
-							</div>
-							<div className="font-medium text-sm text-gray-500">{user.email}</div>
-						</div>
-
-						<div className="mt-3 space-y-1">
-							<ResponsiveNavLink href={route("profile.edit")}>Profile</ResponsiveNavLink>
+					{/* Mobile Navigation */}
+					<div className={(showingNavigationDropdown ? "block" : "hidden") + " sm:hidden"}>
+						<div className="pt-2 pb-3 space-y-1">
 							<ResponsiveNavLink
-								method="post"
-								href={route("logout")}
-								as="button">
-								Log Out
+								href={route("dashboard")}
+								active={route().current("dashboard")}>
+								Dashboard
 							</ResponsiveNavLink>
 						</div>
+
+						<div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+							<div className="px-4">
+								<div className="font-medium text-base text-gray-800 dark:text-gray-200">
+									{user.name}
+								</div>
+								<div className="font-medium text-sm text-gray-500">{user.email}</div>
+							</div>
+
+							<div className="mt-3 space-y-1">
+								<ResponsiveNavLink href={route("profile.edit")}>Profile</ResponsiveNavLink>
+								<ResponsiveNavLink
+									method="post"
+									href={route("logout")}
+									as="button">
+									Log Out
+								</ResponsiveNavLink>
+							</div>
+						</div>
 					</div>
-				</div>
-			</nav>
+				</nav>
 
-			{header && (
-				<header className="bg-white dark:bg-gray-800 shadow">
-					<div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
-				</header>
-			)}
+				{/* Page Heading */}
+				{header && number && (
+					<header className="flex lg:justify-between lg:items-center dark:bg-gray-800">
+						<div className="max-w-7xl py-4 px-4 sm:px-6 lg:px-8">{header}</div>
+						<div className="max-w-7xl py-4 px-4 sm:px-6 lg:px-8">{number}</div>
+					</header>
+				)}
 
-			<main>{children}</main>
+				{/* Main Content */}
+				<main>{children}</main>
+			</div>
 		</div>
 	);
 }
