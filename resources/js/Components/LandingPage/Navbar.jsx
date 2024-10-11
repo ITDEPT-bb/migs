@@ -78,11 +78,11 @@ const Navbar = ({ auth }) => {
 									Sign In
 								</Link>
 								<span className="text-dark">|</span>
-								<Link
+								{/* <Link
 									href="/register"
 									className="font-bold text-md md:text-xl hover:underline">
 									Sign Up
-								</Link>
+								</Link> */}
 							</>
 						)}
 					</div>

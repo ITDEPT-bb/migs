@@ -17,13 +17,13 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 	const { url } = usePage();
 	const sidebarItems = [
 		{ name: "Dashboard", icon: HomeIcon, href: "dashboard" },
-		{ name: "Registration", icon: PencilSquareIcon, href: route("registration") },
-		{ name: "Course", icon: AcademicCapIcon, href: route("course") },
-		{ name: "Project/s", icon: ClipboardDocumentIcon, href: route("projects") },
-		{ name: "My Folder", icon: FolderIcon, href: route("folder") },
-		{ name: "Chart/s", icon: ChartPieIcon, href: route("charts") },
-		{ name: "Reports", icon: PresentationChartBarIcon, href: route("reports") },
-		{ name: "Archive", icon: ArchiveBoxArrowDownIcon, href: route("archive") },
+		{ name: "Registration", icon: PencilSquareIcon, href: "registration" },
+		{ name: "Course", icon: AcademicCapIcon, href: "course" },
+		{ name: "Project/s", icon: ClipboardDocumentIcon, href: "projects" },
+		{ name: "My Folder", icon: FolderIcon, href: "folder" },
+		{ name: "Chart/s", icon: ChartPieIcon, href: "charts" },
+		{ name: "Reports", icon: PresentationChartBarIcon, href: "reports" },
+		{ name: "Archive", icon: ArchiveBoxArrowDownIcon, href: "archive" },
 	];
 
 	return (

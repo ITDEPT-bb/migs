@@ -31,6 +31,7 @@ export default function Authenticated({ user, header, children, number }) {
 						<div className="relative w-full max-w-xs justify-center flex-1">
 							<input
 								type="text"
+								name="search"
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
 								placeholder="Search..."
