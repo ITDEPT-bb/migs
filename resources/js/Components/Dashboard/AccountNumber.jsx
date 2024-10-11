@@ -11,7 +11,7 @@ const AccountNumber = ({ accountNumber }) => {
 
 	return (
 		<h2 className="font-light text-base sm:text-lg lg:text-xl text-black dark:text-gray-200 flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 justify-center sm:justify-start">
-			<span className="text-md sm:text-lg">Student Account Number:</span>
+			<span className="text-md sm:text-sm">Student Account Number:</span>
 			<span className="bg-oceanBlue flex items-center gap-1 lg:gap-2 font-bold text-white px-1 lg:px-4 py-1 lg:py-2 rounded-md">
 				{accountNumber}
 				<button

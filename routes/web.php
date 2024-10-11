@@ -33,8 +33,31 @@ Route::get('/faqs', [LandingPageController::class, 'faqs'])
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [HomeController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])
+        ->name('dashboard');
+
+    Route::get('/course', [HomeController::class, 'course'])
+        ->name('course');
+
+    Route::get('/registration', [HomeController::class, 'registration'])
+        ->name('registration');
+
+    Route::get('/projects', [HomeController::class, 'projects'])
+        ->name('projects');
+
+    Route::get('/folder', [HomeController::class, 'folder'])
+        ->name('folder');
+
+    Route::get('/charts', [HomeController::class, 'charts'])
+        ->name('charts');
+
+    Route::get('/reports', [HomeController::class, 'reports'])
+        ->name('reports');
+
+    Route::get('/archive', [HomeController::class, 'archive'])
+        ->name('archive');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

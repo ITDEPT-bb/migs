@@ -35,6 +35,7 @@ export default {
 				skyWater: "#2FA4DC",
 				aquaWave: "#0FBDF0",
 				softCyan: "#6FCFF6",
+				softBlue: "#bde6fa",
 				cloudWhite: "#F5F6FA",
 				sunYellow: "#FDC800",
 				rosePink: "#F3426E",

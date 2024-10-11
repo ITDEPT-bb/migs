@@ -22,8 +22,10 @@
     "dependencies": {
         "@heroicons/react": "^2.1.5",
         "aos": "^2.3.4",
+        "chart.js": "^4.4.4",
         "flowbite": "^2.5.1",
         "prop-types": "^15.8.1",
+        "react-chartjs-2": "^5.2.0",
         "swiper": "^11.1.9"
     }
 }
