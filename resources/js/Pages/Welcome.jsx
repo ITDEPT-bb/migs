@@ -43,7 +43,15 @@ export default function Welcome({
 
 			<section className="py-10 bg-primary">
 				<section className="max-w-7xl mx-auto">
-					<Advertisements ads={adsChunks[0]} />
+					{adsChunks[0] ? (
+						<Advertisements ads={adsChunks[0]} />
+					) : (
+						<p
+							aria-live="polite"
+							className="text-white text-center">
+							No advertisements available at the moment.
+						</p>
+					)}
 				</section>
 			</section>
 
@@ -67,7 +75,15 @@ export default function Welcome({
 
 			<section className="py-10 bg-primary">
 				<section className="max-w-7xl mx-auto">
-					<Advertisements ads={adsChunks[1]} />
+					{adsChunks[1] ? (
+						<Advertisements ads={adsChunks[1]} />
+					) : (
+						<p
+							aria-live="polite"
+							className="text-white text-center">
+							No advertisements available at the moment.
+						</p>
+					)}
 				</section>
 			</section>
 
@@ -75,7 +91,15 @@ export default function Welcome({
 
 			<section className="py-10 bg-primary">
 				<section className="max-w-7xl mx-auto">
-					<Advertisements ads={adsChunks[2]} />
+					{adsChunks[2] ? (
+						<Advertisements ads={adsChunks[2]} />
+					) : (
+						<p
+							aria-live="polite"
+							className="text-white text-center">
+							No advertisements available at the moment.
+						</p>
+					)}
 				</section>
 			</section>
 

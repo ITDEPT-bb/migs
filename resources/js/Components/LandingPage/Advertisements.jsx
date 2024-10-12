@@ -9,25 +9,33 @@ const Advertisements = ({ ads }) => {
 	}, []);
 
 	return (
-		<div
-			data-aos="fade-up"
-			className="flex flex-col sm:flex-row gap-2 justify-center px-4">
-			{ads.map((ad) => (
+		<div className="flex flex-col sm:flex-row gap-2 justify-center px-4">
+			{ads.length > 0 ? (
+				ads.map((ad) => (
+					<div
+						key={ad.id}
+						className="w-full sm:w-1/2 xl:w-1/2 p-4"
+						data-aos="fade-up">
+						<a
+							href={ad.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`Advertisement: ${ad.name}`}>
+							<img
+								src={ad.image_url}
+								alt={ad.name}
+								className="w-full h-auto shadow-xl rounded-md border-2 border-white"
+							/>
+						</a>
+					</div>
+				))
+			) : (
 				<div
-					key={ad.id}
-					className="w-full sm:w-1/2 xl:w-1/2 p-4">
-					<a
-						href={ad.url}
-						target="_blank"
-						rel="noopener noreferrer">
-						<img
-							src={ad.image_url}
-							alt={ad.name}
-							className="w-full h-auto shadow-xl rounded-md border-2 border-white"
-						/>
-					</a>
+					className="w-full text-center p-4"
+					aria-live="polite">
+					<p className="text-lg">No advertisements available</p>
 				</div>
-			))}
+			)}
 		</div>
 	);
 };
