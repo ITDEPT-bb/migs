@@ -24,18 +24,23 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
+        'role_id',
         'name',
+        'middlename',
         'surname',
         'username',
         'email',
         'phone',
+        'bio',
         'birthday',
         'gender',
-        'password',
-        'cover_path',
         'avatar_path',
+        'cover_path',
         'role',
-        'is_admin'
+        'country',
+        'city',
+        'profession',
+        'password',
     ];
 
     /**
@@ -70,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
-            return $this->is_admin;
+            return $this->role === 'admin';
         }
 
         return true;

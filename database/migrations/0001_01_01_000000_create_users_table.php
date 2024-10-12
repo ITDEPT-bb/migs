@@ -12,17 +12,23 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('role_id')->unique();
             $table->string('name');
-            $table->string('surname')->nullable();
+            $table->string('middlename');
+            $table->string('surname');
+            $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('phone')->nullable();
-            $table->date('birthday')->nullable();
-            $table->enum('gender', ['male', 'female', 'other'])->nullable();
-            $table->string('cover_path', 1024)->nullable();
+            $table->string('phone');
+            $table->text('bio')->nullable();
+            $table->date('birthday');
+            $table->enum('gender', ['male', 'female', 'other']);
             $table->string('avatar_path', 1024)->nullable();
-            $table->boolean('is_admin')->default(false);
-            $table->enum('role', ['student', 'instructor'])->default('student');
+            $table->string('cover_path', 1024)->nullable();
+            $table->enum('role', ['student', 'instructor', 'admin'])->default('student');
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('profession')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

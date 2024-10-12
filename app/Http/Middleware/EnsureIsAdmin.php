@@ -16,11 +16,11 @@ class EnsureIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->is_admin) {
+        if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
 
-        // Redirect or abort with 403 Forbidden if not admin
         abort(403, 'Unauthorized');
     }
 }
+
