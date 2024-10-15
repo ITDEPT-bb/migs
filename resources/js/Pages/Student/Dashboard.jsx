@@ -2,15 +2,15 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import dayjs from "dayjs";
 
-import AccountNumber from "@/Components/Dashboard/AccountNumber";
-import DashboardStats from "@/Components/Dashboard/StatsCard";
-import MemberCounts from "@/Components/Dashboard/MemberCount";
-import PopularCourses from "@/Components/Dashboard/PopularCourses";
-import AvatarGroup from "@/Components/Dashboard/AvatarGroup";
-import NoticeList from "@/Components/Dashboard/NoticeList";
-import StatsBlock from "@/Components/Dashboard/StatsBlock";
-import ProgressChart from "@/Components/Dashboard/ProgressChart";
-import ClassSchedule from "@/Components/Dashboard/ClassSchedule";
+import AccountNumber from "@/Components/Student/AccountNumber";
+import DashboardStats from "@/Components/Student/StatsCard";
+import MemberCounts from "@/Components/Student/MemberCount";
+import PopularCourses from "@/Components/Student/PopularCourses";
+import AvatarGroup from "@/Components/Student/AvatarGroup";
+import NoticeList from "@/Components/Student/NoticeList";
+import StatsBlock from "@/Components/Student/StatsBlock";
+import ProgressChart from "@/Components/Student/ProgressChart";
+import ClassSchedule from "@/Components/Student/ClassSchedule";
 
 export default function Dashboard({ auth }) {
 	const formatDate = (date) => {
@@ -31,7 +31,7 @@ export default function Dashboard({ auth }) {
 					Student Dashboard
 				</h2>
 			}
-			number={<AccountNumber accountNumber={auth.user.id} />}>
+			number={<AccountNumber accountNumber={auth.user.role_id} />}>
 			<Head title="Dashboard" />
 
 			<div className="py-2 bg-gray-100">

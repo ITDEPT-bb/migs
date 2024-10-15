@@ -57,11 +57,19 @@ const Navbar = ({ auth }) => {
 					<div className="flex items-center space-x-2">
 						{auth.user ? (
 							<>
-								<Link
-									href={route("dashboard")}
-									className="font-bold text-md md:text-xl hover:underline">
-									Dashboard
-								</Link>
+								{auth.user.role === "instructor" ? (
+									<Link
+										href={route("instructorDashboard")}
+										className="font-bold text-md md:text-xl hover:underline">
+										Instructor Dashboard
+									</Link>
+								) : (
+									<Link
+										href={route("dashboard")}
+										className="font-bold text-md md:text-xl hover:underline">
+										Dashboard
+									</Link>
+								)}
 								<span className="text-dark">|</span>
 								<Link
 									href={route("logout")}
@@ -77,12 +85,6 @@ const Navbar = ({ auth }) => {
 									className="font-bold text-md md:text-xl hover:underline">
 									Sign In
 								</Link>
-								<span className="text-dark">|</span>
-								{/* <Link
-									href="/register"
-									className="font-bold text-md md:text-xl hover:underline">
-									Sign Up
-								</Link> */}
 							</>
 						)}
 					</div>

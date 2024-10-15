@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
-import AccountNumber from "@/Components/Dashboard/AccountNumber";
+import AccountNumber from "@/Components/Student/AccountNumber";
 
 export default function Chart({ auth }) {
 	return (
@@ -12,7 +12,7 @@ export default function Chart({ auth }) {
 					Chart
 				</h2>
 			}
-			number={<AccountNumber accountNumber={auth.user.id} />}>
+			number={<AccountNumber accountNumber={auth.user.role_id} />}>
 			<Head title="Chart" />
 		</AuthenticatedLayout>
 	);

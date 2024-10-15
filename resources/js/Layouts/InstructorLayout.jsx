@@ -1,18 +1,17 @@
 import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import TextInput from "@/Components/TextInput";
 import { Link } from "@inertiajs/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import Sidebar from "@/Components/Student/Sidebar";
+import Sidebar from "@/Components/Instructor/Sidebar";
 
 export default function Authenticated({ user, header, children, number }) {
 	const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [searchTerm, setSearchTerm] = useState("");
-	const accountNumber = user.role_id;
+	const accountNumber = user.id;
 
 	return (
 		<div className="min-h-screen bg-white dark:bg-gray-900 flex">

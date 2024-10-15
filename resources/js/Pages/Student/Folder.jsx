@@ -1,19 +1,19 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
-import AccountNumber from "@/Components/Dashboard/AccountNumber";
+import AccountNumber from "@/Components/Student/AccountNumber";
 
-export default function Project({ auth }) {
+export default function Folder({ auth }) {
 	return (
 		<AuthenticatedLayout
 			user={auth.user}
 			header={
 				<h2 className="font-bold text-xl  sm:text-2xl lg:text-3xl text-black dark:text-gray-200 sm:text-left">
-					Project/s
+					Folder
 				</h2>
 			}
-			number={<AccountNumber accountNumber={auth.user.id} />}>
-			<Head title="Project/s" />
+			number={<AccountNumber accountNumber={auth.user.role_id} />}>
+			<Head title="Folder" />
 		</AuthenticatedLayout>
 	);
 }

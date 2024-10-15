@@ -14,20 +14,22 @@ class UserObserver
     private function generateRoleId($role)
     {
         switch ($role) {
-            case 'instructor':
-                $prefix = 'INS';
-                break;
             case 'admin':
-                $prefix = 'ADM';
+                $roleCode = 1;
+                break;
+            case 'instructor':
+                $roleCode = 2;
                 break;
             default:
-                $prefix = 'STU';
+                $roleCode = 3;
                 break;
         }
 
         $year = date('y');
 
-        $lastUser = User::where('role_id', 'LIKE', $prefix . $year . '%')->orderBy('role_id', 'desc')->first();
+        $lastUser = User::where('role_id', 'LIKE', "{$roleCode}-{$year}-%")
+            ->orderBy('role_id', 'desc')
+            ->first();
 
         if ($lastUser) {
             $lastNumber = (int) substr($lastUser->role_id, -4);
@@ -36,7 +38,6 @@ class UserObserver
             $newNumber = 1;
         }
 
-        // return $prefix . $year . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
-        return "{$prefix}{$year}-" . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
+        return "{$roleCode}-{$year}-" . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
     }
 }

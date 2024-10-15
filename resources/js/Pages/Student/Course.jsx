@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
-import AccountNumber from "@/Components/Dashboard/AccountNumber";
+import AccountNumber from "@/Components/Student/AccountNumber";
 
 export default function Course({ auth }) {
 	return (
@@ -12,7 +12,7 @@ export default function Course({ auth }) {
 					Course/s
 				</h2>
 			}
-			number={<AccountNumber accountNumber={auth.user.id} />}>
+			number={<AccountNumber accountNumber={auth.user.role_id} />}>
 			<Head title="Course/s" />
 		</AuthenticatedLayout>
 	);
