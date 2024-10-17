@@ -12,7 +12,10 @@ import StatsBlock from "@/Components/Student/StatsBlock";
 import ProgressChart from "@/Components/Student/ProgressChart";
 import ClassSchedule from "@/Components/Student/ClassSchedule";
 
-export default function Dashboard({ auth }) {
+import vectorBoy from "/public/image/Dashboard/studentBoy.png";
+import vectorGirl from "/public/image/Dashboard/studentGirl.png";
+
+export default function Dashboard({ auth, studentCount, instructorCount }) {
 	const formatDate = (date) => {
 		return dayjs(date).format("MMMM D, YYYY");
 	};
@@ -36,8 +39,8 @@ export default function Dashboard({ auth }) {
 
 			<div className="py-2 bg-gray-100">
 				<div className="flex mx-auto gap-2 sm:px-4 lg:px-6">
-					<div className="flex-auto px-5 py-8 w-80 gap-4 bg-gradient-to-r from-aquaWave via-skyWater to-oceanBlue dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl">
-						<div className="flex flex-col gap-1">
+					<div className="flex-auto items-center px-5 py-8 w-80 gap-4 bg-gradient-to-r from-aquaWave via-skyWater to-oceanBlue dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl flex flex-col sm:flex-row">
+						<div className="flex flex-col gap-1 sm:flex-grow">
 							<p className="text-white text-lg">Member Since: {formatDate(auth.user.created_at)}</p>
 							<h2 className="text-4xl font-bold text-white">
 								Welcome back,{" "}
@@ -49,11 +52,21 @@ export default function Dashboard({ auth }) {
 							<p className="text-white text-lg">Always stay updated in your Student Dashboard!</p>
 							<DashboardStats />
 						</div>
+						<div className="flex-shrink-0">
+							<img
+								src={auth.user.gender === "male" ? vectorBoy : vectorGirl}
+								alt="Logo"
+								className="h-48 w-auto overflow-auto bg-softBlue rounded-full"
+							/>
+						</div>
 					</div>
 
 					<div className="flex-auto p-2 w-32 gap-4 dark:bg-gray-800 overflow-hidden">
 						<h1 className="text-xl font-bold px-2">Members Count</h1>
-						<MemberCounts />
+						<MemberCounts
+							studentCount={studentCount}
+							instructorCount={instructorCount}
+						/>
 						<h1 className="text-xl font-bold px-2 mb-4">Completed Projects</h1>
 						<StatsBlock
 							title="Completed Projects"

@@ -9,17 +9,17 @@ const MemberCount = ({ role, count, bgColor, textColor }) => (
 	</div>
 );
 
-const MemberCounts = () => (
+const MemberCounts = ({ studentCount, instructorCount }) => (
 	<div className="flex flex-row justify-between gap-5 p-2">
 		<MemberCount
 			role="Student/s"
-			count="3124"
+			count={studentCount}
 			bgColor="bg-white"
 			textColor="text-oceanBlue"
 		/>
 		<MemberCount
 			role="Instructor/s"
-			count="265"
+			count={instructorCount}
 			bgColor="bg-oceanBlue"
 			textColor="text-white"
 		/>

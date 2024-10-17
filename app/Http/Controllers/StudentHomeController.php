@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -9,7 +10,18 @@ class StudentHomeController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Student/Dashboard');
+        $studentCount = User::where('role', 'student')->count();
+        $instructorCount = User::where('role', 'instructor')->count();
+
+        return Inertia::render('Student/Dashboard', [
+            'studentCount' => $studentCount,
+            'instructorCount' => $instructorCount,
+        ]);
+    }
+
+    public function registration()
+    {
+        return Inertia::render('Student/Registration');
     }
 
     public function course()
@@ -17,9 +29,9 @@ class StudentHomeController extends Controller
         return Inertia::render('Student/Course');
     }
 
-    public function registration()
+    public function certificate()
     {
-        return Inertia::render('Student/Registration');
+        return Inertia::render('Student/Certificate');
     }
 
     public function projects()

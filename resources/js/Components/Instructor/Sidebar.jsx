@@ -2,6 +2,7 @@ import { Link, usePage } from "@inertiajs/react";
 import {
 	HomeIcon,
 	PencilSquareIcon,
+	CheckBadgeIcon,
 	AcademicCapIcon,
 	ClipboardDocumentIcon,
 	FolderIcon,
@@ -15,7 +16,18 @@ import smallLogo from "/public/image/Hero/LOGO 1.png";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 	const { url } = usePage();
-	const sidebarItems = [{ name: "Dashboard", icon: HomeIcon, href: "dashboard" }];
+	const sidebarItems = [
+		{ name: "Dashboard", icon: HomeIcon, href: "dashboard" },
+		{ name: "Registration", icon: PencilSquareIcon, href: "registration" },
+		{ name: "Certifications", icon: CheckBadgeIcon, href: "certifications" },
+		{ name: "Course/s", icon: AcademicCapIcon, href: "course" },
+		{ name: "Lesson/s", icon: ClipboardDocumentIcon, href: "lesson" },
+		{ name: "Document/s", icon: ClipboardDocumentIcon, href: "documents" },
+		{ name: "My Folder", icon: FolderIcon, href: "folder" },
+		{ name: "Chart/s", icon: ChartPieIcon, href: "charts" },
+		{ name: "Reports", icon: PresentationChartBarIcon, href: "reports" },
+		{ name: "Archive", icon: ArchiveBoxArrowDownIcon, href: "archive" },
+	];
 
 	return (
 		<div

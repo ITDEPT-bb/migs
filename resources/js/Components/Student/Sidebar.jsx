@@ -2,6 +2,7 @@ import { Link, usePage } from "@inertiajs/react";
 import {
 	HomeIcon,
 	PencilSquareIcon,
+	CheckBadgeIcon,
 	AcademicCapIcon,
 	ClipboardDocumentIcon,
 	FolderIcon,
@@ -18,6 +19,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 	const sidebarItems = [
 		{ name: "Dashboard", icon: HomeIcon, href: "dashboard" },
 		{ name: "Registration", icon: PencilSquareIcon, href: "registration" },
+		{ name: "Certificate", icon: CheckBadgeIcon, href: "certificate" },
 		{ name: "Course", icon: AcademicCapIcon, href: "course" },
 		{ name: "Project/s", icon: ClipboardDocumentIcon, href: "projects" },
 		{ name: "My Folder", icon: FolderIcon, href: "folder" },
