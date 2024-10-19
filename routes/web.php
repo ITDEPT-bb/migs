@@ -69,34 +69,34 @@ Route::middleware(['auth', 'verified', 'student'])->prefix('student')->group(fun
 // Instructor Routes
 Route::middleware(['auth', 'verified', 'instructor'])->prefix('instructor')->group(function () {
     Route::get('/dashboard', [InstructorHomeController::class, 'index'])
-        ->name('dashboard');
+        ->name('instructorDashboard');
 
     Route::get('/registration', [InstructorHomeController::class, 'registration'])
-        ->name('registration');
+        ->name('instructorRegistration');
 
     Route::get('/certifications', [InstructorHomeController::class, 'certifications'])
-        ->name('certifications');
+        ->name('instructorCertifications');
 
     Route::get('/course', [InstructorHomeController::class, 'course'])
-        ->name('course');
+        ->name('instructorCourse');
 
     Route::get('/lesson', [InstructorHomeController::class, 'lesson'])
-        ->name('lesson');
+        ->name('instructorLesson');
 
     Route::get('/documents', [InstructorHomeController::class, 'documents'])
-        ->name('documents');
+        ->name('instructorDocuments');
 
     Route::get('/folder', [InstructorHomeController::class, 'folder'])
-        ->name('folder');
+        ->name('instructorFolder');
 
     Route::get('/charts', [InstructorHomeController::class, 'charts'])
-        ->name('charts');
+        ->name('instructorCharts');
 
     Route::get('/reports', [InstructorHomeController::class, 'reports'])
-        ->name('reports');
+        ->name('instructorReports');
 
     Route::get('/archive', [InstructorHomeController::class, 'archive'])
-        ->name('archive');
+        ->name('instructorArchive');
 });
 
 Route::middleware('auth')->group(function () {
