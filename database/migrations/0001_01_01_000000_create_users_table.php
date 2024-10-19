@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone');
             $table->text('bio')->nullable();
+            $table->text('quote')->nullable();
             $table->date('birthday');
             $table->enum('gender', ['male', 'female', 'other']);
             $table->string('avatar_path', 1024)->nullable();

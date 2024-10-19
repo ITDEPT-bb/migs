@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class StudentHomeController extends Controller
@@ -21,7 +23,12 @@ class StudentHomeController extends Controller
 
     public function registration()
     {
-        return Inertia::render('Student/Registration');
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        return Inertia::render('Student/Registration', [
+            'user' => new UserResource($user),
+        ]);
     }
 
     public function course()
