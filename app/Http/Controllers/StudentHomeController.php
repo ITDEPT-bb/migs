@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
+use App\Models\Goal;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +27,11 @@ class StudentHomeController extends Controller
         $userId = Auth::id();
         $user = User::findOrFail($userId);
 
+        $goals = Goal::where('user_id', Auth::id())->get();
+
         return Inertia::render('Student/Registration', [
             'user' => new UserResource($user),
+            'goals' => $goals,
         ]);
     }
 

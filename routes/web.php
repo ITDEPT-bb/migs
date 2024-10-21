@@ -3,6 +3,7 @@
 use App\Http\Controllers\InstructorHomeController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SmallFunction\GoalController;
 use App\Http\Controllers\StudentHomeController;
 use App\Http\Middleware\Instructor;
 use App\Http\Middleware\Student;
@@ -103,6 +104,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('goals', GoalController::class);
 });
 
 require __DIR__ . '/auth.php';
