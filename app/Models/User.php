@@ -79,4 +79,9 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
         return true;
     }
+
+    public function goals()
+    {
+        return $this->hasMany(Goal::class);
+    }
 }

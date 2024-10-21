@@ -7,7 +7,6 @@ import BioSection from "@/Components/Student/BioSection";
 import SocialAccounts from "@/Components/Student/SocialAccounts";
 
 export default function Registration({ user, auth }) {
-	console.log(user);
 	return (
 		<AuthenticatedLayout
 			user={auth.user}
@@ -21,8 +20,15 @@ export default function Registration({ user, auth }) {
 			<Head title="Registration" />
 
 			<div className="py-2 bg-gray-100">
+				<div className="flex justify-end mx-auto sm:px-4 lg:px-6">
+					<button
+						type="button"
+						class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+						Edit
+					</button>
+				</div>
 				<div className="flex mx-auto sm:px-4 lg:px-6">
-					<div className="flex-auto px-5 py-8 w-80 gap-4 overflow-hidden flex flex-col sm:flex-row">
+					<div className="flex-auto px-5 w-80 gap-4 overflow-hidden flex flex-col sm:flex-row">
 						<ProfileCard user={user} />
 						<BioSection user={user} />
 					</div>
