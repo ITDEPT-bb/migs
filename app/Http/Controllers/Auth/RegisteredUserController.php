@@ -34,17 +34,17 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'middlename' => 'nullable|string|max:255',
             'surname' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
+            'username' => 'nullable|string|max:255|unique:users',
             'email' => 'required|string|lowercase|email|max:255|unique:users',
             'phone' => 'nullable|string|max:20',
             'bio' => 'nullable|string',
-            'birthday' => 'nullable|date',
-            'gender' => 'nullable|in:male,female,other',
+            'birthday' => 'required|date',
+            'gender' => 'required|in:male,female,other',
             'cover_path' => 'nullable|string|max:1024',
             'avatar_path' => 'nullable|string|max:1024',
-            'role' => 'nullable|string|max:255',
-            'country' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:255',
+            'role' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'profession' => 'nullable|string|max:255',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -72,6 +72,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if ($user->role === 'instructor') {
+            return redirect()->intended(route('instructorDashboard', [], absolute: false));
+        } else {
+            return redirect()->intended(route('dashboard', [], absolute: false));
+        }
+
+        // return redirect(route('dashboard', absolute: false));
     }
 }

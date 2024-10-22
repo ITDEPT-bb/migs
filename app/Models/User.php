@@ -11,10 +11,12 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, HasSlug;
 
     /**
      * The attributes that are mass assignable.
@@ -36,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'avatar_path',
         'cover_path',
         'role',
+        'approved_instructor',
         'country',
         'city',
         'profession',
@@ -63,6 +66,17 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            // ->generateSlugsFrom(['name', 'surname'])
+            ->generateSlugsFrom(['name'])
+            ->saveSlugsTo('username');
     }
 
     /**

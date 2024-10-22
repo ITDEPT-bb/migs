@@ -34,17 +34,19 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = $request->user();
-        if ($user->role === 'instructor') {
-            return redirect()->intended(route('instructorDashboard', [], absolute: false));
-        } else {
-            return redirect()->intended(route('dashboard', [], absolute: false));
-        }
-        // else {
-        //     return redirect()->intended(route('studentDashboard', [], absolute: false));
-        // }
 
-        // return redirect()->intended(route('dashboard', absolute: false));
+        if ($user->role === 'instructor') {
+            if (!$user->approved_instructor) {
+                Auth::logout();
+                return redirect()->back()->withErrors(['email' => 'Your instructor account is not approved.']);
+            }
+
+            return redirect()->intended(route('instructorDashboard', [], absolute: false));
+        }
+
+        return redirect()->intended(route('dashboard', [], absolute: false));
     }
+
 
     /**
      * Destroy an authenticated session.

@@ -85,11 +85,9 @@ export default function UpdateProfileInformation({
 
 						<TextInput
 							id="middlename"
-							className="mt-1 block w-full bg-gray-300"
+							className="mt-1 block w-full"
 							value={data.middlename}
 							onChange={(e) => setData("middlename", e.target.value)}
-							required
-							disabled
 							autoComplete="middlename"
 						/>
 

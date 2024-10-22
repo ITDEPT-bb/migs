@@ -16,8 +16,17 @@ class Instructor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'instructor') {
-            return $next($request);
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->role === 'instructor') {
+                if (!$user->approved_instructor) {
+                    Auth::logout();
+                    return redirect()->route('login')->withErrors(['email' => 'Your instructor account is not approved.']);
+                }
+
+                return $next($request);
+            }
         }
 
         abort(403, 'Unauthorized');

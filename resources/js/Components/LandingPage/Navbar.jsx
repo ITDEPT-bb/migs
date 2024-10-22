@@ -85,6 +85,12 @@ const Navbar = ({ auth }) => {
 									className="font-bold text-md md:text-xl hover:underline">
 									Sign In
 								</Link>
+								<span className="text-dark">|</span>
+								<Link
+									href="/register"
+									className="font-bold text-md md:text-xl hover:underline">
+									Sign Up
+								</Link>
 							</>
 						)}
 					</div>

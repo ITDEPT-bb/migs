@@ -71,6 +71,8 @@ class UserResource extends Resource
                         'instructor' => 'Instructor',
                         'admin' => 'Admin',
                     ]),
+                Forms\Components\Toggle::make('approved_instructor')
+                    ->required(),
                 Forms\Components\TextInput::make('country')
                     ->maxLength(255)
                     ->default(null),
@@ -80,10 +82,10 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('profession')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
+                // Forms\Components\TextInput::make('password')
+                //     ->password()
+                //     ->required()
+                //     ->maxLength(255),
             ]);
     }
 
@@ -95,6 +97,8 @@ class UserResource extends Resource
                     ->label('ID')
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('role')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('middlename')
@@ -118,7 +122,8 @@ class UserResource extends Resource
                 //     ->searchable(),
                 // Tables\Columns\TextColumn::make('avatar_path')
                 //     ->searchable(),
-                Tables\Columns\TextColumn::make('role'),
+                Tables\Columns\IconColumn::make('approved_instructor')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('country')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('city')

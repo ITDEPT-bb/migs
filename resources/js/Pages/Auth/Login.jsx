@@ -81,19 +81,14 @@ export default function Login({ status, canResetPassword }) {
 						onSubmit={submit}
 						className="px-16">
 						<div>
-							<InputLabel
-								htmlFor="email"
-								value="Email"
-								className="text-gray-700"
-							/>
-
 							<TextInput
 								id="email"
 								type="email"
 								name="email"
 								value={data.email}
-								className="mt-1 block w-full"
+								className="mt-1 block rounded-none w-full border-0 border-l-8 border-primary"
 								autoComplete="username"
+								placeholder="Email"
 								isFocused={true}
 								onChange={(e) => setData("email", e.target.value)}
 							/>
@@ -105,18 +100,13 @@ export default function Login({ status, canResetPassword }) {
 						</div>
 
 						<div className="mt-4">
-							<InputLabel
-								htmlFor="password"
-								value="Password"
-								className="text-gray-700"
-							/>
-
 							<TextInput
 								id="password"
 								type="password"
 								name="password"
 								value={data.password}
-								className="mt-1 block w-full"
+								className="mt-1 block rounded-none w-full border-0 border-l-8 border-primary"
+								placeholder="Password"
 								autoComplete="current-password"
 								onChange={(e) => setData("password", e.target.value)}
 							/>
