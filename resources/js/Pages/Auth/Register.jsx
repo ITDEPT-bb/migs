@@ -5,6 +5,7 @@ import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
+import Checkbox from "@/Components/Checkbox";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowRightCircleIcon, ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
@@ -54,7 +55,9 @@ export default function Register() {
 		<>
 			<Head title="Register" />
 
-			<div className="lg:max-w-full lg:h-screen flex justify-center items-center overflow-hidden">
+			<div
+				className="lg:max-w-full lg:h-screen flex justify-center items-center overflow-hidden"
+				data-aos="fade-right">
 				{/* Left Side: Illustration and Text */}
 				<div className="hidden lg:flex flex-col w-1/2 p-24 bg-primary items-center justify-center">
 					<img
@@ -158,7 +161,7 @@ export default function Register() {
 						)}
 
 						{step === 2 && (
-							<>
+							<div>
 								<div>
 									<TextInput
 										id="name"
@@ -225,7 +228,7 @@ export default function Register() {
 								<div className="flex justify-center px-3 pt-4">
 									<p className="text-gray-400 text-xs">1/4</p>
 								</div>
-							</>
+							</div>
 						)}
 
 						{step === 3 && (
@@ -414,6 +417,38 @@ export default function Register() {
 										message={errors.password_confirmation}
 										className="mt-2"
 									/>
+								</div>
+
+								<div className="mt-4">
+									<div className="flex items-center">
+										<input
+											id="terms"
+											type="checkbox"
+											required
+											className="form-checkbox h-5 w-5 text-primary focus:ring focus:ring-indigo-500"
+										/>
+
+										<div className="ms-2">
+											<label
+												htmlFor="terms"
+												className="text-sm text-gray-600 dark:text-gray-400">
+												I agree to the
+												<a
+													target="_blank"
+													href={route("terms.show")}
+													className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 mx-1">
+													Terms of Service
+												</a>
+												and
+												<a
+													target="_blank"
+													href={route("policy.show")}
+													className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 mx-1">
+													Privacy Policy
+												</a>
+											</label>
+										</div>
+									</div>
 								</div>
 
 								<div className="flex justify-between gap-4 mt-4">
