@@ -3,8 +3,10 @@
 use App\Http\Controllers\InstructorHomeController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SmallFunction\ApplicationController;
 use App\Http\Controllers\SmallFunction\GoalController;
 use App\Http\Controllers\SmallFunction\SocialMediaPlatformController;
+use App\Http\Controllers\SmallFunction\UserApplicationController;
 use App\Http\Controllers\SmallFunction\UserSocialAccountController;
 use App\Http\Controllers\StudentHomeController;
 use App\Http\Middleware\Instructor;
@@ -112,6 +114,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('goals', GoalController::class);
     Route::resource('social-accounts', controller: UserSocialAccountController::class);
     Route::get('/social-media-platforms', [SocialMediaPlatformController::class, 'index']);
+
+    Route::get('/applications', [ApplicationController::class, 'index']);
+    Route::resource('user-applications', UserApplicationController::class);
 });
 
 require __DIR__ . '/auth.php';

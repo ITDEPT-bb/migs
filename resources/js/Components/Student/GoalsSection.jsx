@@ -102,7 +102,7 @@ const GoalsSection = () => {
 			)}
 
 			<div className="flex flex-row justify-between items-center align-middle">
-				<h3 className="text-xl font-bold text-oceanBlue mb-3">Goals</h3>
+				<h3 className="text-2xl font-bold text-oceanBlue mb-3">Goals</h3>
 				<button
 					onClick={openModal}
 					className="focus:outline-none">
@@ -138,6 +138,9 @@ const GoalsSection = () => {
 				maxWidth="3xl">
 				<div className="px-1">
 					<div className="p-4 sm:p-6 bg-white dark:bg-gray-800 sm:rounded-lg">
+						<div className="flex py-2 justify-start mb-2">
+							<h1 className="text-lg font-semibold">Add your Goals</h1>
+						</div>
 						<form onSubmit={handleSubmit}>
 							<div className="mb-4">
 								<label className="block text-oceanBlue mb-2">Goal</label>

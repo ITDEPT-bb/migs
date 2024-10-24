@@ -32,7 +32,15 @@ const ProfileCard = ({ user }) => {
 				Student <span className="text-green-500">✔</span>
 			</p>
 
-			<p className="italic text-oceanBlue mb-4 text-center">"{user.data.quote}"</p>
+			<p className="text-oceanBlue mb-4 text-center">
+				{user.data.quote ? (
+					<span className="italic">"{user.data.quote}"</span>
+				) : (
+					<span className="text-gray-500 italic">
+						No quote available. Please add your favorite Quote
+					</span>
+				)}
+			</p>
 
 			<div className="flex flex-col w-full bg-softCyan bg-opacity-25 p-4 rounded-xl">
 				<div className="flex justify-between mb-1">

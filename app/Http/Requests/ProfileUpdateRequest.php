@@ -20,8 +20,8 @@ class ProfileUpdateRequest extends FormRequest
             'middlename' => ['string', 'max:255'],
             // 'surname' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'lowercase', 'max:255', Rule::unique(User::class)->ignore($this->user()->id), 'regex:/^[\w\-\.]+$/i'],
-            'quote' => ['string', 'max:255'],
-            'bio' => ['string', 'max:500'],
+            'quote' => ['nullable', 'string', 'max:255'],
+            'bio' => ['nullable', 'string', 'max:500'],
             // 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }

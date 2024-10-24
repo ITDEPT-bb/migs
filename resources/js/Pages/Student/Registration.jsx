@@ -10,6 +10,7 @@ import Modal from "@/Components/Modal";
 import UpdateProfileInformation from "../Profile/Partials/UpdateProfileInformationForm";
 import UpdatePasswordForm from "../Profile/Partials/UpdatePasswordForm";
 import GoalsSection from "@/Components/Student/GoalsSection";
+import ApplicationList from "@/Components/Student/ApplicationList";
 
 export default function Registration({ user, auth, mustVerifyEmail, status, goals }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,8 +44,9 @@ export default function Registration({ user, auth, mustVerifyEmail, status, goal
 					</button>
 				</div>
 				<div className="flex mx-auto sm:px-4 lg:px-6">
-					<div className="flex-auto px-5 h-full w-32 gap-4 overflow-hidden flex flex-col sm:flex-row">
+					<div className="flex-auto px-5 h-full w-40 gap-4 overflow-hidden flex flex-col">
 						<ProfileCard user={user} />
+						<ApplicationList />
 					</div>
 					<div className="flex-auto px-5 w-40 gap-4 overflow-hidden">
 						<div className="flex flex-col gap-4">
@@ -55,11 +57,6 @@ export default function Registration({ user, auth, mustVerifyEmail, status, goal
 					<div className="flex-auto px-5 py-8 w-40 gap-4 overflow-hidden">
 						<SocialAccounts />
 					</div>
-					{/* <div className="flex flex-wrap">
-						<PersonalitySliders />
-					<CoursesCompleted />
-					<StatusSection />
-					</div> */}
 				</div>
 			</div>
 			<Modal

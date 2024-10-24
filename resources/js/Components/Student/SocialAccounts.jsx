@@ -160,7 +160,7 @@ const SocialAccounts = () => {
 				{socialAccounts.map((account) => (
 					<div
 						key={account.id}
-						className="flex flex-col justify-between items-center">
+						className="flex flex-col justify-between gap-1 items-center">
 						<a
 							href={account.account_url}
 							target="_blank"
@@ -201,6 +201,9 @@ const SocialAccounts = () => {
 				maxWidth="3xl">
 				<div className="px-1">
 					<div className="p-4 sm:p-6 bg-white dark:bg-gray-800 sm:rounded-lg">
+						<div className="flex py-2 justify-start mb-2">
+							<h1 className="text-lg font-semibold">Add your Social Accounts</h1>
+						</div>
 						<form onSubmit={handleSubmit}>
 							<div className="mb-4">
 								<label className="block text-oceanBlue mb-2">Platform</label>

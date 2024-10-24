@@ -176,7 +176,6 @@ export default function UpdateProfileInformation({
 						className="mt-1 block w-full"
 						value={data.quote}
 						onChange={(e) => setData("quote", e.target.value)}
-						required
 						autoComplete="quote"
 					/>
 
@@ -197,7 +196,6 @@ export default function UpdateProfileInformation({
 						className="mt-1 block w-full h-32 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
 						value={data.bio}
 						onChange={(e) => setData("bio", e.target.value)}
-						required
 						autoComplete="bio"
 					/>
 
