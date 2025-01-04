@@ -107,7 +107,7 @@ const ApplicationList = () => {
 				<h3 className="text-2xl font-semibold text-oceanBlue">Application/s</h3>
 				<button
 					onClick={openModal}
-					className="focus:outline-none">
+					className="focus:outline-none hover:scale-110 transition-all">
 					<PencilSquareIcon className="w-6 h-6 text-oceanBlue mb-3" />
 				</button>
 			</div>
@@ -156,7 +156,7 @@ const ApplicationList = () => {
 										<img
 											src={app.icon_path}
 											alt={app.name}
-											className="w-12 h-12 mb-2"
+											className="w-auto h-10 mb-2"
 										/>
 										<span className="text-sm">{app.name}</span>
 										{selectedApplications.includes(app.id) && (

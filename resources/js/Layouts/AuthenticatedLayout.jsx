@@ -5,7 +5,7 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import TextInput from "@/Components/TextInput";
 import { Link } from "@inertiajs/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon, BellIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
 import Sidebar from "@/Components/Student/Sidebar";
 
 export default function Authenticated({ user, header, children, number }) {
@@ -41,15 +41,21 @@ export default function Authenticated({ user, header, children, number }) {
 						</div>
 
 						{/* User Dropdown */}
-						<div className="hidden sm:flex sm:items-center sm:ms-6">
-							<div className="ms-3 relative">
+						<div className="hidden sm:flex sm:items-center gap-4 sm:ms-6">
+							<div className="flex flex-col items-end">
+								<h1 className="text-lg text-white font-semibold uppercase">
+									{user.surname}, {user.name}
+								</h1>
+								<h1 className="text-sm text-white uppercase">{user.role}</h1>
+							</div>
+							<div className="relative">
 								<Dropdown>
 									<Dropdown.Trigger>
 										<span className="inline-flex rounded-md">
 											<button
 												type="button"
-												className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-												{user.name}
+												className="inline-flex items-center p-0.5 rounded-full border border-transparent text-sm leading-4 font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+												{/* {user.name}
 												<svg
 													className="ms-2 -me-0.5 h-4 w-4"
 													xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +66,12 @@ export default function Authenticated({ user, header, children, number }) {
 														d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
 														clipRule="evenodd"
 													/>
-												</svg>
+												</svg> */}
+												<img
+													src={user.avatar_url || "/image/default_avatar.png"}
+													alt="User Avatar"
+													className="h-8 w-8 rounded-full object-cover"
+												/>
 											</button>
 										</span>
 									</Dropdown.Trigger>
@@ -74,6 +85,20 @@ export default function Authenticated({ user, header, children, number }) {
 										</Dropdown.Link>
 									</Dropdown.Content>
 								</Dropdown>
+							</div>
+
+							{/* Notification and Settings */}
+							<div className="flex items-center space-x-4">
+								{/* <div className="relative"> */}
+								<button className="text-white focus:outline-none">
+									<BellIcon className="h-8 w-8" />
+									{/* <span className="absolute top-0 right-0 inline-block w-3 h-3 bg-red-600 rounded-full border-2 border-white"></span> */}
+								</button>
+								{/* </div> */}
+
+								<button className="text-white focus:outline-none">
+									<Cog6ToothIcon className="h-8 w-8" />
+								</button>
 							</div>
 						</div>
 

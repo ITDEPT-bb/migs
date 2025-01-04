@@ -105,7 +105,7 @@ const GoalsSection = () => {
 				<h3 className="text-2xl font-bold text-oceanBlue mb-3">Goals</h3>
 				<button
 					onClick={openModal}
-					className="focus:outline-none">
+					className="focus:outline-none hover:scale-110 transition-all">
 					<PencilSquareIcon className="w-6 h-6 text-oceanBlue mb-3" />
 				</button>
 			</div>

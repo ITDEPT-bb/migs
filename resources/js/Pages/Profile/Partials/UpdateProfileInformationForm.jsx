@@ -18,6 +18,8 @@ export default function UpdateProfileInformation({
 		middlename: user.middlename,
 		surname: user.surname,
 		username: user.username,
+		country: user.country,
+		city: user.city,
 		email: user.email,
 		quote: user.quote,
 		bio: user.bio,
@@ -116,6 +118,50 @@ export default function UpdateProfileInformation({
 						<InputError
 							className="mt-2"
 							message={errors.surname}
+						/>
+					</div>
+				</div>
+
+				<div className="flex flex-row gap-4">
+					<div className="w-full">
+						<InputLabel
+							htmlFor="country"
+							value="Country"
+						/>
+
+						<TextInput
+							id="country"
+							className="mt-1 block w-full bg-gray-300"
+							value={data.country}
+							onChange={(e) => setData("country", e.target.value)}
+							disabled
+							autoComplete="country"
+						/>
+
+						<InputError
+							className="mt-2"
+							message={errors.country}
+						/>
+					</div>
+
+					<div className="w-full">
+						<InputLabel
+							htmlFor="city"
+							value="City"
+						/>
+
+						<TextInput
+							id="city"
+							className="mt-1 block w-full bg-gray-300"
+							value={data.city}
+							disabled
+							onChange={(e) => setData("city", e.target.value)}
+							autoComplete="city"
+						/>
+
+						<InputError
+							className="mt-2"
+							message={errors.city}
 						/>
 					</div>
 				</div>

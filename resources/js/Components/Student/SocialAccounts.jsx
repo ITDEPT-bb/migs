@@ -139,19 +139,19 @@ const SocialAccounts = () => {
 					<div className="flex flex-row gap-2">
 						<button
 							onClick={() => openModal()}
-							className="hover:scale-90 transition-all">
+							className="hover:scale-110 transition-all">
 							<PlusIcon className="w-6 h-6 text-oceanBlue mb-3" />
 						</button>
 						<button
 							onClick={toggleEditOff}
-							className="hover:scale-90 transition-all">
+							className="hover:scale-110 transition-all">
 							<XCircleIcon className="w-6 h-6 text-oceanBlue mb-3" />
 						</button>
 					</div>
 				) : (
 					<button
 						onClick={toggleEditOn}
-						className="hover:scale-90 transition-all">
+						className="hover:scale-110 transition-all">
 						<PencilSquareIcon className="w-6 h-6 text-oceanBlue mb-3" />
 					</button>
 				)}
@@ -165,7 +165,7 @@ const SocialAccounts = () => {
 							href={account.account_url}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-2 hover:scale-90 transition-all">
+							className="flex items-center gap-2 hover:scale-110 transition-all">
 							{account.platform ? (
 								<img
 									src={account.platform.icon_path}
@@ -183,12 +183,12 @@ const SocialAccounts = () => {
 								<button
 									className="flex items-center text-blue-500"
 									onClick={() => openModal(account)}>
-									<PencilSquareIcon className="w-5 h-5 hover:scale-90 transition-all" />
+									<PencilSquareIcon className="w-5 h-5 hover:scale-110 transition-all" />
 								</button>
 								<button
 									className="flex items-center text-red-500"
 									onClick={() => handleDeleteClick(account.id)}>
-									<TrashIcon className="w-5 h-5 hover:scale-90 transition-all" />
+									<TrashIcon className="w-5 h-5 hover:scale-110 transition-all" />
 								</button>
 							</div>
 						)}
