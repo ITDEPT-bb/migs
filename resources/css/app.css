@@ -19,3 +19,53 @@ html {
         transition: transform 0.15s ease-in-out;
     }
 }
+
+@keyframes cloud1 {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.animate-cloud1 {
+    animation: cloud1 12s infinite ease-in-out;
+}
+
+/* Middle cloud (medium speed) */
+@keyframes cloud2 {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.animate-cloud2 {
+    animation: cloud2 10s infinite ease-in-out;
+}
+
+/* Foreground cloud (fastest movement) */
+@keyframes cloud3 {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.animate-cloud3 {
+    animation: cloud3 8s infinite ease-in-out;
+}
+
+@media only screen and (max-width: 1580px) {
+}

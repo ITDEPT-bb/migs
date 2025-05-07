@@ -72,12 +72,13 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if ($user->role === 'instructor') {
-            return redirect()->intended(route('instructorDashboard', [], absolute: false));
-        } else {
-            return redirect()->intended(route('dashboard', [], absolute: false));
-        }
+        // if ($user->role === 'instructor') {
+        //     return redirect()->intended(route('instructorDashboard', [], absolute: false));
+        // } else {
+        //     return redirect()->intended(route('dashboard', [], absolute: false));
+        // }
 
+        return redirect(route('landing.show', absolute: false));
         // return redirect(route('dashboard', absolute: false));
     }
 }
