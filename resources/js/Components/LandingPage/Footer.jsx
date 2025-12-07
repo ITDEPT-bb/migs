@@ -119,6 +119,18 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
+                <div className="w-full flex justify-center text-center mb-2 mt-10">
+                    <span className="text-sm text-white dark:text-gray-400">
+                        Official Partner of{" "}
+                        <a
+                            href="https://eswfworldcup.org/"
+                            className="hover:underline font-bold"
+                        >
+                            ESports World Federation
+                        </a>{" "}
+                        and <span className="font-bold">World Esports and Digital Sports Academy</span>
+                    </span>
+                </div>
 				<hr className="my-6 border-gray-200 dark:border-gray-700 lg:my-8" />
 				<div className="sm:flex sm:items-center sm:justify-between">
 					<span className="text-sm text-white dark:text-gray-400">
