@@ -17,6 +17,9 @@ import FBicon from "/public/image/Hero/F.png";
 import YTicon from "/public/image/Hero/YT.png";
 import IGicon from "/public/image/Hero/IG.png";
 
+import ESWFLogo from "/public/image/Footer/eswf.png";
+import ESWFALogo from "/public/image/Footer/eswfa.png";
+
 // Define social media links
 const socialLinks = [
 	{
@@ -35,66 +38,48 @@ const socialLinks = [
 const Navbar = ({ auth }) => {
 	return (
 		<>
-			<nav className="bg-white border-gray-200 dark:bg-gray-900">
-				<div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 pt-4">
-					<a
-						href="https://flowbite.com"
-						className="flex items-center space-x-3 rtl:space-x-reverse">
-						{/* Large Logo - hidden on small screens */}
-						<img
-							src={logo}
-							alt="Logo"
-							className="h-12 w-auto hidden md:block"
-						/>
+			<nav className="bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+			  <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between space-y-4 md:space-y-0">
+			    
+			    {/* Logo Section */}
+			    <a href="https://flowbite.com" className="flex items-center space-x-3 rtl:space-x-reverse">
+			      <img src={logo} alt="Logo" className="h-12 w-auto hidden md:block" />
+			      <img src={smallLogo} alt="Small Logo" className="h-12 w-auto block md:hidden" />
+			    </a>
+			    {/* Partner Section */}
+			    <div className="flex flex-col md:flex-row items-center gap-4 text-center">
+				  <span className="font-semibold text-gray-900 dark:text-white">Official Partner of</span>
 
-						{/* Small Logo - visible on small screens */}
-						<img
-							src={smallLogo}
-							alt="Small Logo"
-							className="h-12 w-auto block md:hidden"
-						/>
-					</a>
-					<div className="flex items-center space-x-2">
-						{auth.user ? (
-							<>
-								{auth.user.role === "instructor" ? (
-									<Link
-										href={route("instructorDashboard")}
-										className="font-bold text-md md:text-xl hover:underline">
-										Instructor Dashboard
-									</Link>
-								) : (
-									<Link
-										href={route("dashboard")}
-										className="font-bold text-md md:text-xl hover:underline">
-										Dashboard
-									</Link>
-								)}
-								<span className="text-dark">|</span>
-								<Link
-									href={route("logout")}
-									method="post"
-									className="font-bold text-md md:text-xl hover:underline">
-									Sign Out
-								</Link>
-							</>
-						) : (
-							<>
-								<Link
-									href="/login"
-									className="font-bold text-md md:text-xl hover:underline">
-									Sign In
-								</Link>
-								<span className="text-dark">|</span>
-								<Link
-									href="/register"
-									className="font-bold text-md md:text-xl hover:underline">
-									Sign Up
-								</Link>
-							</>
-						)}
-					</div>
+				  <a href="#" className="flex flex-col items-center group relative">
+				    <img
+				      src={ESWFALogo}
+				      className="h-auto w-28 sm:w-36 md:w-48 bg-primary dark:bg-transparent px-3 py-2 rounded"
+				      alt="World Esports and Digital Sports Academy Logo"
+				    />
+				    <span className="absolute top-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap">
+				      World Esports and Digital Sports Academy
+				    </span>
+				  </a>
+
+				  <span className="hidden md:inline font-semibold text-gray-900 dark:text-white">and</span>
+
+				  <a
+				    href="https://eswfworldcup.org/"
+				    target="_blank"
+				    className="flex flex-col items-center group relative"
+				  >
+				    <img
+				      src={ESWFLogo}
+				      className="h-auto w-24 sm:w-28 md:w-36 bg-primary dark:bg-transparent px-3 py-3.5 rounded"
+				      alt="ESWF Logo"
+				    />
+				    <span className="absolute top-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap">
+				      ESports World Federation
+				    </span>
+				  </a>
 				</div>
+
+			  </div>
 			</nav>
 
 			{/* Sticky Navigation */}
@@ -127,7 +112,7 @@ const Navbar = ({ auth }) => {
 						className="hidden w-full md:block"
 						id="navbar-default">
 						<div className="flex justify-between items-center">
-							<ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+							<ul className="w-full md:w-auto font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 								{menuItems.map((item, index) => (
 									<li key={index}>
 										<a
@@ -142,10 +127,85 @@ const Navbar = ({ auth }) => {
 										</a>
 									</li>
 								))}
+
+								{auth.user ? (
+							        <>
+							            <li>
+							                <Link
+							                    href={auth.user.role === "instructor" ? route("instructorDashboard") : route("dashboard")}
+							                    className="block sm:hidden font-normal py-1 px-3 text-lg font-bold hover:underline text-accent font-arialRounded tracking-tight hover:underline hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+							                >
+							                    {auth.user.role === "instructor" ? "Instructor Dashboard" : "Dashboard"}
+							                </Link>
+							            </li>
+							            <li>
+							                <Link
+							                    href={route("logout")}
+							                    method="post"
+							                    className="block sm:hidden font-normal py-1 px-3 text-lg font-bold hover:underline text-accent font-arialRounded tracking-tight hover:underline hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+							                >
+							                    Sign Out
+							                </Link>
+							            </li>
+							        </>
+							    ) : (
+							        <>
+							            <li>
+							                <Link href="/login" className="block sm:hidden font-normal py-1 px-3 text-lg font-bold hover:underline text-accent font-arialRounded tracking-tight hover:underline hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+							                    Sign In
+							                </Link>
+							            </li>
+							            <li>
+							                <Link href="/register" className="block sm:hidden font-normal py-1 px-3 text-lg font-bold hover:underline text-accent font-arialRounded tracking-tight hover:underline hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+							                    Sign Up
+							                </Link>
+							            </li>
+							        </>
+							    )}	
 							</ul>
+							<div className="hidden sm:flex items-center space-x-2">
+								{auth.user ? (
+									<>
+										{auth.user.role === "instructor" ? (
+											<Link
+												href={route("instructorDashboard")}
+												className="font-bold text-md md:text-xl hover:underline dark:text-white">
+												Instructor Dashboard
+											</Link>
+										) : (
+											<Link
+												href={route("dashboard")}
+												className="font-bold text-md md:text-xl hover:underline dark:text-white">
+												Dashboard
+											</Link>
+										)}
+										<span className="text-dark dark:text-white">|</span>
+										<Link
+											href={route("logout")}
+											method="post"
+											className="font-bold text-md md:text-xl hover:underline dark:text-white">
+											Sign Out
+										</Link>
+									</>
+								) : (
+									<>
+										<Link
+											href="/login"
+											className="font-bold text-md md:text-xl hover:underline dark:text-white">
+											Sign In
+										</Link>
+										<span className="text-dark">|</span>
+										<Link
+											href="/register"
+											className="font-bold text-md md:text-xl hover:underline dark:text-white">
+											Sign Up
+										</Link>
+									</>
+								)}
+							</div>
 
 							{/* Social Media Icons */}
-							<div className="hidden sm:flex space-x-4">
+							{/*<div className="hidden sm:flex space-x-4">
 								<h1 className="text-gray-400 font-arialRounded text-xl">Follow us:</h1>
 								{socialLinks.map((social, index) => (
 									<a
@@ -161,7 +221,7 @@ const Navbar = ({ auth }) => {
 										/>
 									</a>
 								))}
-							</div>
+							</div>*/}
 						</div>
 					</div>
 				</div>

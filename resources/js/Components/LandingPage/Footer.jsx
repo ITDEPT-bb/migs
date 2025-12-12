@@ -1,7 +1,5 @@
 import React from "react";
 import Logo from "/public/image/Footer/LOGO 1.png";
-import ESWFLogo from "/public/image/Footer/eswf.png";
-import ESWFALogo from "/public/image/Footer/eswfa.png";
 
 const Footer = () => {
 	const links = [
@@ -121,40 +119,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-                <div className="w-full flex justify-center mb-2 mt-10">
-				  <span className="text-sm text-white dark:text-gray-400 flex flex-wrap items-center gap-4 font-semibold text-center">
-				    Official Partner of
-				    
-				    <a
-				      href="#"
-				      className="font-bold flex items-center gap-2 group relative"
-				    >
-				      <img
-				        src={ESWFALogo}
-				        className="h-auto w-28 sm:w-36 md:w-52"
-				        alt="World Esports and Digital Sports Academy Logo"
-				      />
-				      <span className="absolute right-0 bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap">
-				        World Esports and Digital Sports Academy
-				      </span>
-				    </a>
-				    and
-				    <a
-				      href="https://eswfworldcup.org/"
-				      target="_blank"
-				      className="hover:underline font-bold flex items-center gap-2 group relative"
-				    >
-				      <img
-				        src={ESWFLogo}
-				        className="h-auto w-20 sm:w-28 md:w-36"
-				        alt="ESWF Logo"
-				      />
-				      <span className="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap">
-				        ESports World Federation
-				      </span>
-				    </a>
-				  </span>
-				</div>
+                
 				<hr className="my-6 border-gray-200 dark:border-gray-700 lg:my-8" />
 				<div className="sm:flex sm:items-center sm:justify-between">
 					<span className="text-sm text-white dark:text-gray-400">
